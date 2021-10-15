@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>message02(tooltip).png</file>
+  </qresource>
+</RCC>

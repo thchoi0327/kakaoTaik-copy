@@ -152,7 +152,7 @@ class Ui_kakao(object):
                         QtWidgets.QMessageBox.about(self,'warning','로그인에 성공하였습니다')
                         print('[메시지] 로그인 성공');
                 else:
-                        QtWidgets.QMessageBox.about(self,'warning','로그인에 실패하였습니다.')
+                        QtWidgets.QMessageBox.about(self,'warning','로그인에 실패하였습니다.')                        
                         print('[메시지] 로그인 실패');
 if __name__ == "__main__":
         import sys
