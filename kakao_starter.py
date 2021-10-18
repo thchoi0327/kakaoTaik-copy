@@ -11,6 +11,7 @@ class kinwriter(QMainWindow, Ui_kakao):
         super().__init__()
 
         self.setupUi(self)
+
         # self.timer = QTimer(self)
         # self.timer.setSingleShot(False)
         # self.timer.setInterval(5000) # in milliseconds, so 5000 = 5 seconds

@@ -11,7 +11,13 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 import requests
 import json
-
+import os
+def resource_path(relative_path):
+        try:
+                base_path = sys._MEIPASS
+        except Exception:
+                base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
 
 class Ui_kakao(object):
         def setupUi(self, kakao):
@@ -34,7 +40,7 @@ class Ui_kakao(object):
                 self.label = QtWidgets.QLabel(self.centralwidget)
                 self.label.setGeometry(QtCore.QRect(120, 37, 111, 191))
                 self.label.setText("")
-                self.label.setPixmap(QtGui.QPixmap("./img/kakao.png"))
+                self.label.setPixmap(QtGui.QPixmap(resource_path("../img/kakao.png")))
                 self.label.setObjectName("label")
                 self.lineEdit_id = QtWidgets.QLineEdit(self.centralwidget)
                 self.lineEdit_id.setGeometry(QtCore.QRect(60, 230, 241, 37))
@@ -88,7 +94,7 @@ class Ui_kakao(object):
                 self.label_3.setGeometry(QtCore.QRect(136, 355, 21, 21))
                 self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
                 self.label_3.setText("")
-                self.label_3.setPixmap(QtGui.QPixmap("./img/message01.png"))
+                self.label_3.setPixmap(QtGui.QPixmap(resource_path("../img/message01.png")))
                 self.label_3.setObjectName("label_3")
                 self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
                 self.textBrowser.setGeometry(QtCore.QRect(60, 392, 251, 71))
