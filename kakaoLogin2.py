@@ -9,200 +9,152 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import requests
-import json
-import os
-def resource_path(relative_path):
-        try:
-                base_path = sys._MEIPASS
-        except Exception:
-                base_path = os.path.abspath(".")
-        return os.path.join(base_path, relative_path)
 
-class Ui_kakao(object):
-        def setupUi(self, kakao):
-                kakao.setObjectName("kakao")
-                kakao.resize(360, 589)
-                kakao.setStyleSheet("background-color:rgb(255,235,51);")
-                kakao.setAnimated(True)
-                kakao.setDocumentMode(False)
-                self.centralwidget = QtWidgets.QWidget(kakao)
-                self.centralwidget.setObjectName("centralwidget")
-                self.pushButton_login = QtWidgets.QPushButton(self.centralwidget)
-                self.pushButton_login.setGeometry(QtCore.QRect(60, 311, 241, 42))
-                self.pushButton_login.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-                self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
-                "background-color:rgba(246,246,246);\n"
-                "color:rgb(172,172,172);\n"
-                "border:1px solid rgb(229,211,46);\n"
-                "border-radius:3px")
-                self.pushButton_login.setObjectName("pushButton_login")
-                self.label = QtWidgets.QLabel(self.centralwidget)
-                self.label.setGeometry(QtCore.QRect(120, 37, 111, 191))
-                self.label.setText("")
-                self.label.setPixmap(QtGui.QPixmap(resource_path("../img/kakao.png")))
-                self.label.setObjectName("label")
-                self.lineEdit_id = QtWidgets.QLineEdit(self.centralwidget)
-                self.lineEdit_id.setGeometry(QtCore.QRect(60, 230, 241, 37))
-                self.lineEdit_id.setStyleSheet("border:1px solid rgb(229,211,46);\n"
-                "border-bottom:0.5px solid rgb(242,242,242);\n"
-                "border-top-right-radius:3px;\n"
-                "border-top-left-radius:3px;\n"
-                "background-color:#fff;\n"
-                "padding-left:5px;")
-                self.lineEdit_id.setText("")
-                self.lineEdit_id.setObjectName("lineEdit_id")
-                self.lineEdit_pw = QtWidgets.QLineEdit(self.centralwidget)
-                self.lineEdit_pw.setGeometry(QtCore.QRect(60, 266, 241, 37))
-                self.lineEdit_pw.setStyleSheet("border:1px solid rgb(229,211,46);\n"
-                "border-top:0.5px solid rgb(242,242,242);\n"
-                "border-bottom-right-radius:4px;\n"
-                "border-bottom-left-radius:4px;\n"
-                "background-color:#fff;\n"
-                "padding-left:5px;")
-                self.lineEdit_pw.setInputMask("")
-                self.lineEdit_pw.setText("")
-                self.lineEdit_pw.setObjectName("lineEdit_pw")
-                self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-                self.checkBox.setGeometry(QtCore.QRect(62, 357, 73, 16))
-                self.checkBox.setStyleSheet("color:rgb(127,117,25);\n"
-                "font-weight:300;\n"
-                "font-size:11px;\n"
-                "")
-                self.checkBox.setObjectName("checkBox")
-                self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-                self.pushButton.setGeometry(QtCore.QRect(84, 519, 91, 31))
-                self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-                self.pushButton.setStyleSheet("border:none;\n"
-                "font-size:11px;\n"
-                "font-weight:400;\n"
-                "color:rgb(127,117,25)")
-                self.pushButton.setObjectName("pushButton")
-                self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-                self.pushButton_2.setGeometry(QtCore.QRect(184, 519, 91, 31))
-                self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-                self.pushButton_2.setStyleSheet("border:none;\n"
-                "font-size:11px;\n"
-                "font-weight:400;\n"
-                "color:rgb(127,117,25);")
-                self.pushButton_2.setObjectName("pushButton_2")
-                self.label_2 = QtWidgets.QLabel(self.centralwidget)
-                self.label_2.setGeometry(QtCore.QRect(176, 526, 3, 18))
-                self.label_2.setStyleSheet("color:rgb(229,211,46)")
-                self.label_2.setObjectName("label_2")
-                self.label_3 = QtWidgets.QLabel(self.centralwidget)
-                self.label_3.setGeometry(QtCore.QRect(136, 355, 21, 21))
-                self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-                self.label_3.setText("")
-                self.label_3.setPixmap(QtGui.QPixmap(resource_path("../img/message01.png")))
-                self.label_3.setObjectName("label_3")
-                self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-                self.textBrowser.setGeometry(QtCore.QRect(60, 392, 251, 71))
-                self.textBrowser.setStyleSheet("color:rgb(255,91,73);\n"
-                "border:none;\n"
-                "font-weight:100;")
-                self.textBrowser.setObjectName("textBrowser")
-                self.label_FailPw = QtWidgets.QLabel(self.centralwidget)
-                self.label_FailPw.setGeometry(QtCore.QRect(59, 229, 243, 75))
-                self.label_FailPw.setStyleSheet("border:1px solid rgb(255,91,73);\n"
-                "border-radius:3px;")
-                self.label_FailPw.setText("")
-                self.label_FailPw.setObjectName("label_FailPw")
-                self.label_FailPw.raise_()
-                self.label_FailPw.setVisible(False);
-                self.pushButton_login.raise_()
-                self.label.raise_()
-                self.lineEdit_id.raise_()
-                self.lineEdit_pw.raise_()
-                self.checkBox.raise_()
-                self.pushButton.raise_()
-                self.pushButton_2.raise_()
-                self.label_2.raise_()
-                self.label_3.raise_()
-                self.textBrowser.raise_()
-                kakao.setCentralWidget(self.centralwidget)
-                self.statusbar = QtWidgets.QStatusBar(kakao)
-                self.statusbar.setObjectName("statusbar")
-                kakao.setStatusBar(self.statusbar)
 
-                self.retranslateUi(kakao)
-                self.pushButton_login.clicked.connect(kakao.login)
-                self.pushButton_login.clicked.connect(kakao.login)
-                self.lineEdit_pw.returnPressed.connect(kakao.login);
-                self.lineEdit_id.textChanged.connect(kakao.buttonColor);
-                self.lineEdit_pw.textChanged.connect(kakao.buttonColor);
-                self.lineEdit_pw.setEchoMode(QtWidgets.QLineEdit.Password);
-                QtCore.QMetaObject.connectSlotsByName(kakao)
+class Ui_LoginPage(object):
 
-        def retranslateUi(self, kakao):
-                _translate = QtCore.QCoreApplication.translate
-                kakao.setWindowTitle(_translate("kakao", "MainWindow"))
-                self.pushButton_login.setText(_translate("kakao", "로그인"))
-                self.lineEdit_id.setPlaceholderText(_translate("kakao", "카카오 계정(이메일 또는 전화번호)"))
-                self.lineEdit_pw.setPlaceholderText(_translate("kakao", "비밀번호"))
-                self.checkBox.setText(_translate("kakao", "자동로그인"))
-                self.pushButton.setText(_translate("kakao", "카카오계정 찾기"))
-                self.pushButton_2.setText(_translate("kakao", "비밀번호 재설정"))
-                self.label_2.setText(_translate("kakao", "|"))
-                self.textBrowser.setHtml(_translate("kakao", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                "p, li { white-space: pre-wrap; }\n"
-                "</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; font-weight:96; font-style:normal;\">\n"
-                "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:400;\">카카오계정 또는 비밀번호를 다시 확인해 주<br />세요.</span></p>\n"
-                "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;\"><br /></p></body></html>"))
-                self.textBrowser.setVisible(False);
-                self.label_FailPw.setVisible(False);
+    def setupUi(self, kakao):
+        self.centralwidget = QtWidgets.QWidget(kakao)
+        self.centralwidget.setObjectName("centralwidget")
+        self.pushButton_login = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_login.setGeometry(QtCore.QRect(60, 311, 241, 42))
+        self.pushButton_login.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
+                                            "background-color:rgb(246,246,246);\n"
+                                            "color:rgb(172,172,172);\n"
+                                            "border:1px solid rgb(229,211,46);\n"
+                                            "border-radius:3px")
+        self.pushButton_login.setObjectName("pushButton_login")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(120, 37, 111, 191))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("./img/kakao.png"))
+        self.label.setObjectName("label")
+        self.lineEdit_id = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_id.setGeometry(QtCore.QRect(60, 230, 241, 37))
+        self.lineEdit_id.setStyleSheet("border:1px solid rgb(229,211,46);\n"
+                                       "border-bottom:0.5px solid rgb(242,242,242);\n"
+                                       "border-top-right-radius:3px;\n"
+                                       "border-top-left-radius:3px;\n"
+                                       "background-color:#fff;\n"
+                                       "padding-left:5px;")
+        self.lineEdit_id.setText("")
+        self.lineEdit_id.setObjectName("lineEdit_id")
+        self.lineEdit_pw = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_pw.setGeometry(QtCore.QRect(60, 266, 241, 37))
+        self.lineEdit_pw.setStyleSheet("border:1px solid rgb(229,211,46);\n"
+                                       "border-top:0.5px solid rgb(242,242,242);\n"
+                                       "border-bottom-right-radius:4px;\n"
+                                       "border-bottom-left-radius:4px;\n"
+                                       "background-color:#fff;\n"
+                                       "padding-left:5px;")
+        self.lineEdit_pw.setInputMask("")
+        self.lineEdit_pw.setText("")
+        self.lineEdit_pw.setObjectName("lineEdit_pw")
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(62, 357, 73, 16))
+        self.checkBox.setStyleSheet("color:rgb(127,117,25);\n"
+                                    "font-weight:300;\n"
+                                    "font-size:11px;\n"
+                                    "")
+        self.checkBox.setObjectName("checkBox")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(84, 519, 91, 31))
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton.setStyleSheet("border:none;\n"
+                                      "font-size:11px;\n"
+                                      "font-weight:400;\n"
+                                      "color:rgb(127,117,25)")
+        self.pushButton.setObjectName("pushButton")
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(184, 519, 91, 31))
+        self.pushButton_2.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_2.setStyleSheet("border:none;\n"
+                                        "font-size:11px;\n"
+                                        "font-weight:400;\n"
+                                        "color:rgb(127,117,25);")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.label_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(176, 526, 3, 18))
+        self.label_2.setStyleSheet("color:rgb(229,211,46)")
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(136, 355, 21, 21))
+        self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.label_3.setText("")
+        self.label_3.setPixmap(QtGui.QPixmap("./img/message01.png"))
+        self.label_3.setObjectName("label_3")
+        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser.setGeometry(QtCore.QRect(60, 392, 251, 71))
+        self.textBrowser.setStyleSheet("color:rgb(255,91,73);\n"
+                                       "border:none;\n"
+                                       "font-weight:100;")
+        self.textBrowser.setObjectName("textBrowser")
+        self.label_FailPw = QtWidgets.QLabel(self.centralwidget)
+        self.label_FailPw.setGeometry(QtCore.QRect(59, 229, 243, 75))
+        self.label_FailPw.setStyleSheet("border:1px solid rgb(255,91,73);\n"
+                                        "border-radius:3px;")
+        self.label_FailPw.setText("")
+        self.label_FailPw.setObjectName("label_FailPw")
+        self.label_FailPw.raise_()
+        self.label_FailPw.setVisible(False)
+        self.pushButton_login.raise_()
+        self.label.raise_()
+        self.lineEdit_id.raise_()
+        self.lineEdit_pw.raise_()
+        self.checkBox.raise_()
+        self.pushButton.raise_()
+        self.pushButton_2.raise_()
+        self.label_2.raise_()
+        self.label_3.raise_()
+        self.textBrowser.raise_()
+        kakao.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(kakao)
+        self.statusbar.setObjectName("statusbar")
+        kakao.setStatusBar(self.statusbar)
 
-        def buttonColor(self):
-                if (self.lineEdit_id.text() != '' and self.lineEdit_pw.text() != ''):
-                        self.pushButton_login.setStyleSheet("background-color:rgb(66,54,48);\n"
-                        "color:rgb(255,255,255);\n"
-                        "border:1px solid rgb(66,54,48);\n"
-                        "border-radius:3px")
-                        self.label_FailPw.setVisible(False)
-                        self.textBrowser.setVisible(False)
-                        return;
-                self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
-                "background-color:rgb(246,246,246);\n"
-                "color:rgb(172,172,172);\n"
-                "border:1px solid rgb(229,211,46);\n"
-                "border-radius:3px")
-                
-        def login(self):
-                userId = self.lineEdit_id.text();
-                userPw = self.lineEdit_pw.text();
-                if (userId == ''):
-                        QtWidgets.QMessageBox.about(self, 'kakao','아이디를 입력해주세요.')
-                        return
-                if (userPw == ''):
-                        QtWidgets.QMessageBox.about(self, 'kakao','비밀번호를 입력해주세요.')
-                        return
-                url = "http://192.168.0.57:8181/huefax/Chatting.do?cmd=ChattingLogin"
-                
-                loginData = {'userId': userId, 'userPw': userPw}
-                try:
-                        req = requests.post(url, data=loginData)
-                except requests.exceptions.RequestException as e:
-                        QtWidgets.QMessageBox.about(self,'warning','서버 점검 중입니다.')
-                        print('서버연결실패');
-                        return
-                
-                JSONdata = json.loads(str(req.text))
-                data = JSONdata['result']
-                if (data == 'SUCCESS'):
-                        QtWidgets.QMessageBox.about(self,'warning','로그인에 성공하였습니다')
-                        print('[메시지] 로그인 성공');
-                else:
-                        self.label_FailPw.setVisible(True)
-                        self.textBrowser.setVisible(True)
-                        print('[메시지] 로그인 실패');
-                        
+        self.retranslateUi(kakao)
+        self.pushButton_login.clicked.connect(kakao.login)
+        self.pushButton_login.clicked.connect(kakao.login)
+        self.lineEdit_pw.returnPressed.connect(kakao.login)
+        self.lineEdit_id.textChanged.connect(kakao.buttonColor)
+        self.lineEdit_pw.textChanged.connect(kakao.buttonColor)
+        self.lineEdit_pw.setEchoMode(QtWidgets.QLineEdit.Password)
+        QtCore.QMetaObject.connectSlotsByName(kakao)
 
-if __name__ == "__main__":
-        import sys
-        app = QtWidgets.QApplication(sys.argv)
-        kakao = QtWidgets.QMainWindow()
-        ui = Ui_kakao()
-        ui.setupUi(kakao)
-        kakao.show()
-        sys.exit(app.exec_())
+    def retranslateUi(self, kakao):
+        _translate = QtCore.QCoreApplication.translate
+        kakao.setWindowTitle(_translate("kakao", "MainWindow"))
+        self.pushButton_login.setText(_translate("kakao", "로그인"))
+        self.lineEdit_id.setPlaceholderText(
+            _translate("kakao", "카카오 계정(이메일 또는 전화번호)"))
+        self.lineEdit_pw.setPlaceholderText(_translate("kakao", "비밀번호"))
+        self.checkBox.setText(_translate("kakao", "자동로그인"))
+        self.pushButton.setText(_translate("kakao", "카카오계정 찾기"))
+        self.pushButton_2.setText(_translate("kakao", "비밀번호 재설정"))
+        self.label_2.setText(_translate("kakao", "|"))
+        self.textBrowser.setHtml(_translate("kakao", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+                                            "p, li { white-space: pre-wrap; }\n"
+                                            "</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; font-weight:96; font-style:normal;\">\n"
+                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:400;\">카카오계정 또는 비밀번호를 다시 확인해 주<br />세요.</span></p>\n"
+                                            "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;\"><br /></p></body></html>"))
+        self.textBrowser.setVisible(False)
+        self.label_FailPw.setVisible(False)
+
+    def buttonColor(self):
+        if (self.lineEdit_id.text() != '' and self.lineEdit_pw.text() != ''):
+            self.pushButton_login.setStyleSheet("background-color:rgb(66,54,48);\n"
+                                                "color:rgb(255,255,255);\n"
+                                                "border:1px solid rgb(66,54,48);\n"
+                                                "border-radius:3px")
+            self.label_FailPw.setVisible(False)
+            self.textBrowser.setVisible(False)
+            return
+        self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
+                                            "background-color:rgb(246,246,246);\n"
+                                            "color:rgb(172,172,172);\n"
+                                            "border:1px solid rgb(229,211,46);\n"
+                                            "border-radius:3px")
