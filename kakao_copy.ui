@@ -37,7 +37,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">border-color: rgb(227, 227, 227);
-background-color:rgba(246,246,246);
+background-color:rgb(246,246,246);
 color:rgb(172,172,172);
 border:1px solid rgb(229,211,46);
 border-radius:3px</string>
