@@ -26,7 +26,7 @@ class Ui_LoginPage(object):
         self.pushButton_login.setCursor(
             QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
-                                            "background-color:rgba(246,246,246);\n"
+                                            "background-color:rgb(246,246,246);\n"
                                             "color:rgb(172,172,172);\n"
                                             "border:1px solid rgb(229,211,46);\n"
                                             "border-radius:3px")
