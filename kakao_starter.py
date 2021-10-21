@@ -48,6 +48,16 @@ class LoginPage(QMainWindow, Ui_LoginPage):
             self.textBrowser.setVisible(True)
             print('[메시지] 로그인 실패')
 
+    # 앱 종료
+    def main_close(self):
+        sys.exit()
+
+    def minimize(self):
+        widget.showMinimized()
+
+    def maximize(self):
+        widget.showMaximized()
+
 
 class MainPage(QMainWindow):
     def __init__(self):

@@ -149,6 +149,8 @@ class Ui_LoginPage(object):
                                    "font-size:16px;")
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
+        self.lineEdit_id.raise_()
+        self.lineEdit_pw.raise_()
         kakao.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(kakao)
         self.statusbar.setObjectName("statusbar")
@@ -201,12 +203,6 @@ class Ui_LoginPage(object):
                                             "border:1px solid rgb(229,211,46);\n"
                                             "border-radius:3px")
 
-    def main_close(self):
-        print('mainClose 실행 !')
-        print('mainClose 실행 !')
-        print('mainClose 실행 !')
-        print('mainClose 실행 !')
-
     def maximize(self):
         print('maximize 실행 !')
         print('maximize 실행 !')
@@ -217,6 +213,7 @@ class Ui_LoginPage(object):
         print('maximize 실행 !')
 
     def minimize(self):
+
         print('minimize !')
         print('minimize !')
         print('minimize !')
