@@ -14,7 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(255,235,51);</string>
+   <string notr="true">background-color:rgb(255,235,51);
+</string>
   </property>
   <property name="animated">
    <bool>true</bool>
@@ -23,6 +24,9 @@
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QPushButton" name="pushButton_login">
     <property name="geometry">
      <rect>
@@ -59,7 +63,7 @@ border-radius:3px</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>kakao.png</pixmap>
+     <pixmap>img/kakao.png</pixmap>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_id">
@@ -211,11 +215,136 @@ color:rgb(127,117,25);</string>
      <pixmap>message01.png</pixmap>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_close">
+    <property name="geometry">
+     <rect>
+      <x>332</x>
+      <y>10</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image:url(&quot;C:/visualWorkspace/kakaoTaik-copy/img/close.png&quot;);
+border:none;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_maxi">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image:url(&quot;C:/visualWorkspace/kakaoTaik-copy/img/maximize.png&quot;);
+border:none;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_mini">
+    <property name="geometry">
+     <rect>
+      <x>288</x>
+      <y>9</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image:url(&quot;C:/visualWorkspace/kakaoTaik-copy/img/minimize.png&quot;);
+border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_setting">
+    <property name="geometry">
+     <rect>
+      <x>249</x>
+      <y>10</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image:url(&quot;C:/visualWorkspace/kakaoTaik-copy/img/setting.png&quot;);
+border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_alert">
+    <property name="geometry">
+     <rect>
+      <x>225</x>
+      <y>11</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image:url(&quot;C:/visualWorkspace/kakaoTaik-copy/img/alert.png&quot;);
+border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>274</x>
+      <y>10</y>
+      <width>5</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(229,221,46);
+font-size:16px;</string>
+    </property>
+    <property name="text">
+     <string>|</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="test.qrc"/>
+  <include location="img/test.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -266,10 +395,61 @@ color:rgb(127,117,25);</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_close</sender>
+   <signal>clicked()</signal>
+   <receiver>kakao</receiver>
+   <slot>main_close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>88</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_maxi</sender>
+   <signal>clicked()</signal>
+   <receiver>kakao</receiver>
+   <slot>maximize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>315</x>
+     <y>110</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_mini</sender>
+   <signal>clicked()</signal>
+   <receiver>kakao</receiver>
+   <slot>minimize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>295</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>login()</slot>
   <slot>buttonColor()</slot>
   <slot>buttonColorPw()</slot>
+  <slot>main_close()</slot>
+  <slot>maximize()</slot>
+  <slot>minimize()</slot>
  </slots>
 </ui>

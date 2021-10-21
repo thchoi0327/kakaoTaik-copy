@@ -11,25 +11,30 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_LoginPage(object):
-
+class Ui_kakao(object):
     def setupUi(self, kakao):
+        kakao.setObjectName("kakao")
+        kakao.resize(360, 589)
+        kakao.setStyleSheet("background-color:rgb(255,235,51);")
+        kakao.setAnimated(True)
+        kakao.setDocumentMode(False)
         self.centralwidget = QtWidgets.QWidget(kakao)
+        self.centralwidget.setStyleSheet("")
         self.centralwidget.setObjectName("centralwidget")
         self.pushButton_login = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_login.setGeometry(QtCore.QRect(60, 311, 241, 42))
+        self.pushButton_login.setGeometry(QtCore.QRect(60, 306, 241, 42))
         self.pushButton_login.setCursor(
             QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
-                                            "background-color:rgb(246,246,246);\n"
+                                            "background-color:rgba(246,246,246);\n"
                                             "color:rgb(172,172,172);\n"
                                             "border:1px solid rgb(229,211,46);\n"
                                             "border-radius:3px")
         self.pushButton_login.setObjectName("pushButton_login")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(120, 37, 111, 191))
+        self.label.setGeometry(QtCore.QRect(120, 40, 111, 191))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("./img/kakao.png"))
+        self.label.setPixmap(QtGui.QPixmap("img/kakao.png"))
         self.label.setObjectName("label")
         self.lineEdit_id = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEdit_id.setGeometry(QtCore.QRect(60, 230, 241, 37))
@@ -53,7 +58,7 @@ class Ui_LoginPage(object):
         self.lineEdit_pw.setText("")
         self.lineEdit_pw.setObjectName("lineEdit_pw")
         self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setGeometry(QtCore.QRect(62, 357, 73, 16))
+        self.checkBox.setGeometry(QtCore.QRect(62, 352, 73, 16))
         self.checkBox.setStyleSheet("color:rgb(127,117,25);\n"
                                     "font-weight:300;\n"
                                     "font-size:11px;\n"
@@ -81,35 +86,59 @@ class Ui_LoginPage(object):
         self.label_2.setStyleSheet("color:rgb(229,211,46)")
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(136, 355, 21, 21))
+        self.label_3.setGeometry(QtCore.QRect(136, 351, 21, 21))
         self.label_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("./img/message01.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("message01.png"))
         self.label_3.setObjectName("label_3")
-        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(60, 392, 251, 71))
-        self.textBrowser.setStyleSheet("color:rgb(255,91,73);\n"
-                                       "border:none;\n"
-                                       "font-weight:100;")
-        self.textBrowser.setObjectName("textBrowser")
-        self.label_FailPw = QtWidgets.QLabel(self.centralwidget)
-        self.label_FailPw.setGeometry(QtCore.QRect(59, 229, 243, 75))
-        self.label_FailPw.setStyleSheet("border:1px solid rgb(255,91,73);\n"
-                                        "border-radius:3px;")
-        self.label_FailPw.setText("")
-        self.label_FailPw.setObjectName("label_FailPw")
-        self.label_FailPw.raise_()
-        self.label_FailPw.setVisible(False)
-        self.pushButton_login.raise_()
-        self.label.raise_()
-        self.lineEdit_id.raise_()
-        self.lineEdit_pw.raise_()
-        self.checkBox.raise_()
-        self.pushButton.raise_()
-        self.pushButton_2.raise_()
-        self.label_2.raise_()
-        self.label_3.raise_()
-        self.textBrowser.raise_()
+        self.pushButton_close = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_close.setGeometry(QtCore.QRect(332, 10, 16, 16))
+        self.pushButton_close.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_close.setStyleSheet("image:url(\"C:/visualWorkspace/kakaoTaik-copy/img/close.png\");\n"
+                                            "border:none;\n"
+                                            "")
+        self.pushButton_close.setText("")
+        self.pushButton_close.setObjectName("pushButton_close")
+        self.pushButton_maxi = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_maxi.setGeometry(QtCore.QRect(310, 10, 16, 16))
+        self.pushButton_maxi.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_maxi.setStyleSheet("image:url(\"C:/visualWorkspace/kakaoTaik-copy/img/maximize.png\");\n"
+                                           "border:none;\n"
+                                           "")
+        self.pushButton_maxi.setText("")
+        self.pushButton_maxi.setObjectName("pushButton_maxi")
+        self.pushButton_mini = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_mini.setGeometry(QtCore.QRect(288, 9, 16, 16))
+        self.pushButton_mini.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_mini.setStyleSheet("image:url(\"C:/visualWorkspace/kakaoTaik-copy/img/minimize.png\");\n"
+                                           "border:none;")
+        self.pushButton_mini.setText("")
+        self.pushButton_mini.setObjectName("pushButton_mini")
+        self.pushButton_setting = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_setting.setGeometry(QtCore.QRect(249, 10, 16, 16))
+        self.pushButton_setting.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_setting.setStyleSheet("image:url(\"C:/visualWorkspace/kakaoTaik-copy/img/setting.png\");\n"
+                                              "border:none;")
+        self.pushButton_setting.setText("")
+        self.pushButton_setting.setObjectName("pushButton_setting")
+        self.pushButton_alert = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_alert.setGeometry(QtCore.QRect(225, 11, 16, 16))
+        self.pushButton_alert.setCursor(
+            QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton_alert.setStyleSheet("image:url(\"C:/visualWorkspace/kakaoTaik-copy/img/alert.png\");\n"
+                                            "border:none;")
+        self.pushButton_alert.setText("")
+        self.pushButton_alert.setObjectName("pushButton_alert")
+        self.label_9 = QtWidgets.QLabel(self.centralwidget)
+        self.label_9.setGeometry(QtCore.QRect(274, 10, 5, 16))
+        self.label_9.setStyleSheet("color:rgb(229,221,46);\n"
+                                   "font-size:16px;")
+        self.label_9.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_9.setObjectName("label_9")
         kakao.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(kakao)
         self.statusbar.setObjectName("statusbar")
@@ -117,10 +146,11 @@ class Ui_LoginPage(object):
 
         self.retranslateUi(kakao)
         self.pushButton_login.clicked.connect(kakao.login)
-        self.lineEdit_pw.returnPressed.connect(kakao.login)
-        self.lineEdit_id.textChanged.connect(kakao.buttonColor)
-        self.lineEdit_pw.textChanged.connect(kakao.buttonColor)
-        self.lineEdit_pw.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_id.textEdited['QString'].connect(kakao.buttonColor)
+        self.lineEdit_pw.selectionChanged.connect(kakao.buttonColorPw)
+        self.pushButton_close.clicked.connect(kakao.main_close)
+        self.pushButton_maxi.clicked.connect(kakao.maximize)
+        self.pushButton_mini.clicked.connect(kakao.minimize)
         QtCore.QMetaObject.connectSlotsByName(kakao)
 
     def retranslateUi(self, kakao):
@@ -134,26 +164,4 @@ class Ui_LoginPage(object):
         self.pushButton.setText(_translate("kakao", "카카오계정 찾기"))
         self.pushButton_2.setText(_translate("kakao", "비밀번호 재설정"))
         self.label_2.setText(_translate("kakao", "|"))
-        self.textBrowser.setHtml(_translate("kakao", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-                                            "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-                                            "p, li { white-space: pre-wrap; }\n"
-                                            "</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; font-weight:96; font-style:normal;\">\n"
-                                            "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:400;\">카카오계정 또는 비밀번호를 다시 확인해 주<br />세요.</span></p>\n"
-                                            "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;\"><br /></p></body></html>"))
-        self.textBrowser.setVisible(False)
-        self.label_FailPw.setVisible(False)
-
-    def buttonColor(self):
-        if (self.lineEdit_id.text() != '' and self.lineEdit_pw.text() != ''):
-            self.pushButton_login.setStyleSheet("background-color:rgb(66,54,48);\n"
-                                                "color:rgb(255,255,255);\n"
-                                                "border:1px solid rgb(66,54,48);\n"
-                                                "border-radius:3px")
-            self.label_FailPw.setVisible(False)
-            self.textBrowser.setVisible(False)
-            return
-        self.pushButton_login.setStyleSheet("border-color: rgb(227, 227, 227);\n"
-                                            "background-color:rgb(246,246,246);\n"
-                                            "color:rgb(172,172,172);\n"
-                                            "border:1px solid rgb(229,211,46);\n"
-                                            "border-radius:3px")
+        self.label_9.setText(_translate("kakao", "|"))
