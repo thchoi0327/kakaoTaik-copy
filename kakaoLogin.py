@@ -15,7 +15,11 @@ class Ui_LoginPage(object):
     def setupUi(self, kakao):
         kakao.setObjectName("kakao")
         kakao.resize(360, 589)
-        kakao.setStyleSheet("background-color:rgb(255,235,51);")
+        kakao.setStyleSheet(
+            "#kakao {background-color:rgb(255,235,51); border:1px solid rgb(123,113,21)}")
+        kakao.setFixedWidth(360)
+        kakao.setFixedHeight(589)
+        kakao.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         kakao.setAnimated(True)
         kakao.setDocumentMode(False)
         self.centralwidget = QtWidgets.QWidget(kakao)
@@ -181,7 +185,7 @@ class Ui_LoginPage(object):
         self.textBrowser.setHtml(_translate("kakao", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
                                             "p, li { white-space: pre-wrap; }\n"
-                                            "</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; font-weight:96; font-style:normal;\">\n"
+                                            "</style></head><body style=\" font-family:\'Gulim\'; font-size:9pt; background-color:rgb(255,235,51); font-weight:96; font-style:normal;\">\n"
                                             "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:400;\">카카오계정 또는 비밀번호를 다시 확인해 주<br />세요.</span></p>\n"
                                             "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:400;\"><br /></p></body></html>"))
         self.textBrowser.setVisible(False)
@@ -202,19 +206,3 @@ class Ui_LoginPage(object):
                                             "color:rgb(172,172,172);\n"
                                             "border:1px solid rgb(229,211,46);\n"
                                             "border-radius:3px")
-
-    def maximize(self):
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-        print('maximize 실행 !')
-
-    def minimize(self):
-
-        print('minimize !')
-        print('minimize !')
-        print('minimize !')
-        print('minimize !')
