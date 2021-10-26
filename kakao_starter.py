@@ -68,7 +68,7 @@ class LoginPage(QMainWindow, Ui_LoginPage):
 
 
 class MainPage(QMainWindow, ChattingPage):
-    HOST = 'localhost'
+    HOST = '127.0.0.1'
     PORT = 3000
     s = socket(AF_INET, SOCK_STREAM)
 
@@ -84,7 +84,8 @@ class MainPage(QMainWindow, ChattingPage):
         if event.type() == QtCore.QEvent.KeyPress and obj is self.inputText:
             if event.key() == QtCore.Qt.Key_Return and self.inputText.hasFocus():
                 self.send_message()
-        return super().eventFilter(obj, event)
+                return True
+        return False
 
     def send_message(self):
         QtWidgets.qApp.processEvents()
@@ -93,7 +94,6 @@ class MainPage(QMainWindow, ChattingPage):
             return
 
         self.inputText.clear()
-        self.inputText.setPlainText("\n")
         data = msg.encode()
         # 메시지 길이를 구한다.
         length = len(data)
