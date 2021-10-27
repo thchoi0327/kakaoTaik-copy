@@ -1,19 +1,19 @@
+from json import decoder
 import sys
 
 
 from PyQt5 import QtWidgets, QtCore
 from PyQt5 import *
 from PyQt5.QtCore import *
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtWebEngineWidgets
 from PyQt5.QtWidgets import *
-from PyQt5.uic import loadUi
-
 from kakaoLogin import Ui_LoginPage  # 수정부분
 from PyQt5 import uic
 from _socket import AF_INET, socket, SOCK_STREAM
 import requests
 import json
 import sys
+import threading
 
 USER_NAME = ""
 ChattingPage = uic.loadUiType("ChattingPage.ui")[0]
@@ -76,9 +76,14 @@ class MainPage(QMainWindow, ChattingPage):
         super(MainPage, self).__init__(parent)
         self.s.connect((self.HOST, self.PORT))
         self.setupUi(self)
-
+        self.msgCSS()
         self.inputButton.clicked.connect(self.send_message)
         self.inputText.installEventFilter(self)
+
+        # 채팅 수신 스레드 생성
+        receive_thread = threading.Thread(
+            target=self.receive_message, args=(1, self.s))
+        receive_thread.start()
 
     def eventFilter(self, obj, event):
         if event.type() == QtCore.QEvent.KeyPress and obj is self.inputText:
@@ -86,6 +91,19 @@ class MainPage(QMainWindow, ChattingPage):
                 self.send_message()
                 return True
         return False
+
+    def receive_message(self, num, socket):
+        while 1:
+            try:
+                rev_data = socket.recv(4)
+                rev_length = int.from_bytes(rev_data, "little")
+                rev_data = socket.recv(rev_length)
+                rev_msg = rev_data.decode('CP949')
+                print(rev_msg)
+            except Exception as e:
+                print('내가 닫았어 !!!!!')
+                socket.close()
+                break
 
     def send_message(self):
         QtWidgets.qApp.processEvents()
@@ -101,14 +119,36 @@ class MainPage(QMainWindow, ChattingPage):
         self.s.sendall(length.to_bytes(4, byteorder="little"))
         # 데이터를 전송한다.
         self.s.sendall(data)
-        self.showChat(msg)
+        self.sendMsg(msg)
 
-    def showChat(self, msg):
-        self.resultBrower.append("[나] %s" % msg)
+    def revMsg(self, msg):
+        self.resultBrower.append(
+            "<html><head><head/><body>" +
+            "<table>" +
+            "<td class='revmsg'>"+msg+"</td>" +
+            "</table>" +
+            "</body></html>")
+
+    def sendMsg(self, msg):
+        self.resultBrower.append(
+            "<html><head><head/><body><table><td><p>"+msg+"</p></td></table></body > </html >")
+        # self.resultBrower.append("[나] %s" % msg)
+
+    def msgCSS(self):
+        # 내가 보낸 메시지 꾸미기
+        browser = self.resultBrower
+        revCSS = 'table{margin-right:100px} .revmsg{padding:10px; background-color:white; color:black;} '
+        sendCSS = 'p{text-align:right} td{text-align:right; background-color:white; padding:10px}'
+        browser.document().setDefaultStyleSheet(sendCSS)
+        # sendCSS = ''
+
+        # browser.document().setDefaultStyleSheet(
+        #     '.sendP{align:left; padding:10px; background-color:white; color:black;}')
 
 
 app = QApplication(sys.argv)
-kakao = LoginPage()
+kakao = MainPage()
+# kakao = LoginPage()
 kakao.show()
 app.exec_()
 
