@@ -8,6 +8,7 @@ from PyQt5.QtCore import *
 from PyQt5 import QtWidgets, QtWebEngineWidgets
 from PyQt5.QtWidgets import *
 from kakaoLogin import Ui_LoginPage  # 수정부분
+from kakaoChatting import Ui_ChattingPage
 from PyQt5 import uic
 from _socket import AF_INET, socket, SOCK_STREAM
 import requests
@@ -16,7 +17,7 @@ import sys
 import threading
 
 USER_NAME = ""
-ChattingPage = uic.loadUiType("ChattingPage.ui")[0]
+# ChattingPage = uic.loadUiType("ChattingPage.ui")[0]
 
 
 class LoginPage(QMainWindow, Ui_LoginPage):
@@ -67,23 +68,24 @@ class LoginPage(QMainWindow, Ui_LoginPage):
         self.showMaximized()
 
 
-class MainPage(QMainWindow, ChattingPage):
-    HOST = '127.0.0.1'
+class ChattingPage(QMainWindow, Ui_ChattingPage):
+    HOST = '192.168.2.85'
     PORT = 3000
     s = socket(AF_INET, SOCK_STREAM)
 
     def __init__(self, parent=None):
-        super(MainPage, self).__init__(parent)
+        super(ChattingPage, self).__init__(parent)
         self.s.connect((self.HOST, self.PORT))
         self.setupUi(self)
         self.msgCSS()
         self.inputButton.clicked.connect(self.send_message)
         self.inputText.installEventFilter(self)
-
         # 채팅 수신 스레드 생성
         receive_thread = threading.Thread(
             target=self.receive_message, args=(1, self.s))
         receive_thread.start()
+
+        self.doJoin()
 
     def eventFilter(self, obj, event):
         if event.type() == QtCore.QEvent.KeyPress and obj is self.inputText:
@@ -99,8 +101,8 @@ class MainPage(QMainWindow, ChattingPage):
                 rev_length = int.from_bytes(rev_data, "little")
                 rev_data = socket.recv(rev_length)
                 rev_msg = rev_data.decode('CP949')
-                self.resultBrower.append(
-                    "<div style="">"+rev_msg+"</div>")
+                self.resultBrower.append(rev_msg)
+
                 # self.resultBrower.append(
                 #     "<html><head><head/><body>" +
                 #     "<table>" +
@@ -112,6 +114,12 @@ class MainPage(QMainWindow, ChattingPage):
                 socket.close()
                 break
 
+    def doJoin(self):
+        Join_DATA = "join:최태환".encode()
+        jOIN_length = len(Join_DATA)
+        self.s.sendall(jOIN_length.to_bytes(4, byteorder="little"))
+        self.s.sendall(Join_DATA)
+
     def send_message(self):
         QtWidgets.qApp.processEvents()
         msg = self.inputText.toPlainText()
@@ -119,6 +127,7 @@ class MainPage(QMainWindow, ChattingPage):
             return
 
         self.inputText.clear()
+        msg = "message:"+msg
         data = msg.encode()
         # 메시지 길이를 구한다.
         length = len(data)
@@ -126,9 +135,9 @@ class MainPage(QMainWindow, ChattingPage):
         self.s.sendall(length.to_bytes(4, byteorder="little"))
         # 데이터를 전송한다.
         self.s.sendall(data)
-        self.sendMsg(msg)
+        self.sendMsgCSS(msg)
 
-    def sendMsg(self, msg):
+    def sendMsgCSS(self, msg):
         self.resultBrower.append(
             "<html><head><head/><body>" +
             "<table>" +
@@ -150,7 +159,7 @@ class MainPage(QMainWindow, ChattingPage):
 
 
 app = QApplication(sys.argv)
-kakao = MainPage()
+kakao = ChattingPage()
 # kakao = LoginPage()
 kakao.show()
 app.exec_()
