@@ -99,7 +99,14 @@ class MainPage(QMainWindow, ChattingPage):
                 rev_length = int.from_bytes(rev_data, "little")
                 rev_data = socket.recv(rev_length)
                 rev_msg = rev_data.decode('CP949')
-                print(rev_msg)
+                self.resultBrower.append(
+                    "<div style="">"+rev_msg+"</div>")
+                # self.resultBrower.append(
+                #     "<html><head><head/><body>" +
+                #     "<table>" +
+                #     "<td>"+rev_msg+"</td>" +
+                #     "</table>" +
+                #     "</body></html>")
             except Exception as e:
                 print('내가 닫았어 !!!!!')
                 socket.close()
@@ -121,25 +128,21 @@ class MainPage(QMainWindow, ChattingPage):
         self.s.sendall(data)
         self.sendMsg(msg)
 
-    def revMsg(self, msg):
+    def sendMsg(self, msg):
         self.resultBrower.append(
             "<html><head><head/><body>" +
             "<table>" +
-            "<td class='revmsg'>"+msg+"</td>" +
+            "<td class='sendmsg'>"+msg+"</td>" +
             "</table>" +
             "</body></html>")
 
-    def sendMsg(self, msg):
-        self.resultBrower.append(
-            "<html><head><head/><body><table><td><p>"+msg+"</p></td></table></body > </html >")
         # self.resultBrower.append("[나] %s" % msg)
 
     def msgCSS(self):
         # 내가 보낸 메시지 꾸미기
         browser = self.resultBrower
-        revCSS = 'table{margin-right:100px} .revmsg{padding:10px; background-color:white; color:black;} '
-        sendCSS = 'p{text-align:right} td{text-align:right; background-color:white; padding:10px}'
-        browser.document().setDefaultStyleSheet(sendCSS)
+        messageCSS = 'div{margin-right:100px} .sendmsg{padding:8px; background-color:rgb(255,235,51)}'
+        browser.document().setDefaultStyleSheet(messageCSS)
         # sendCSS = ''
 
         # browser.document().setDefaultStyleSheet(
